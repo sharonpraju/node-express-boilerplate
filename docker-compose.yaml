@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app_db:
+    image: mongo
+    ports:
+      - $MONGODB_MACHINE_PORT:$MONGODB_PORT
+    volumes:
+      - app-db-volume:/data/db
+  app_server:
+    depends_on:
+      - app_db
+    build: ./app
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $NODE_MACHINE_PORT:$NODE_PORT
+    stdin_open: true
+    tty: true
+    volumes:
+      - app-server-volume:/app/uploads
+
+volumes: 
+  app-db-volume:
+  app-server-volume:
