@@ -12,6 +12,11 @@ module.exports = {
         "_id": "63592f9e29fa6431e563fe02",
         "title": "user",
         "type_id": 2
+      },
+      {
+        "_id": "63592f9e29fa6431e563fe03",
+        "title": "user",
+        "type_id": 2
       }
     ])
       .then((res) => {
@@ -25,6 +30,7 @@ module.exports = {
         $in: [
           "63592f9e29fa6431e563fe01",
           "63592f9e29fa6431e563fe02",
+          "63592f9e29fa6431e563fe03",
         ],
       },
     }).then((res) => {

@@ -11,7 +11,7 @@ exports.login = async function (req, res) {
     try {
         let user = await users.findOne({ $and: [{ email: email }, { deleted: { $ne: true } }] });
         if (user) {
-            bcrypt.compare(password, user.password, async (error, auth) => {
+            bcrypt.compare(password, user.secrets?.password, async (error, auth) => {
                 if (auth === true) {
                     //valid credentials
                     let access_token = jwt.sign({ "id": user._id }, process.env.PRIVATE_KEY, { expiresIn: '10d' });

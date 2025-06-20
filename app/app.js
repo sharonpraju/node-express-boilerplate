@@ -23,7 +23,6 @@ app.use('/system_generated', express.static(__dirname + '/system_generated'));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 //creating folders and files for ticket storing and log saving
-if (!fs.existsSync('./system_generated/tickets')) fs.mkdirSync('./system_generated/tickets', { recursive: true });
 if (!fs.existsSync('./logs')) fs.mkdirSync('./logs', { recursive: true });
 if (!fs.existsSync('./logs/api-logs.txt')) fs.open('./logs/api-logs.txt', 'w', (error, file) => { if (error) console.log(error) });
 if (!fs.existsSync('./logs/email-logs.txt')) fs.open('./logs/email-logs.txt', 'w', (error, file) => { if (error) console.log(error) });
