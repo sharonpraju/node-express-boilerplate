@@ -39,7 +39,7 @@ exports.fetchUsers = async function (req, res) {
 
         let filters = [{ deleted: { $ne: true } }];
 
-        if (keyword) filters.push({ title: new RegExp(keyword, 'i') });
+        if (keyword) filters.push({ name: new RegExp(keyword, 'i') });
 
         let user_array = await users.find(filters.length > 0 ? { $and: filters } : null, '-password')
             .populate('type')
